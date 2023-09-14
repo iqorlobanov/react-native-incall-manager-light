@@ -1,6 +1,7 @@
 # react-native-incall-manager-light
 
-Incall manager for ReactNative
+Light incall manager for React Native
+
 
 ## Installation
 
@@ -12,8 +13,14 @@ npm install react-native-incall-manager-light
 yarn add react-native-incall-manager-light
 ```
 
+## iOS
+
+```sh
+cd ios/ && pod install
+```
+
 ## Android
-Add `MODIFY_AUDIO_SETTINGS` and `WAKE_LOCK` permissions to `AndroidManifest.xml`
+Required to add `MODIFY_AUDIO_SETTINGS` and `WAKE_LOCK` permissions to `AndroidManifest.xml`
 ```sh
 // ...
 <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -38,7 +45,7 @@ IncallManagerLight.enableProximity();
 | `isSpeakerphoneOn()`                | Return `boolean` value                                                         |
 | `setSpeakerPhoneOn(enable: boolean)`| Set speakerphone status                                                        |
 | `enableProximity()`                 | Enables the screen to turn off when an object approaches the proximity sensor  |
-| `disableProximity()`                | Вшыфидуы the screen to turn off when an object approaches the proximity sensor |
+| `disableProximity()`                | Disables the screen to turn off when an object approaches the proximity sensor |
 
 ## Contributing
 
