@@ -6,7 +6,7 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const IncallManagerLight = NativeModules.IncallManagerLight
+const IncallManagerLightModule = NativeModules.IncallManagerLight
   ? NativeModules.IncallManagerLight
   : new Proxy(
       {},
@@ -17,6 +17,29 @@ const IncallManagerLight = NativeModules.IncallManagerLight
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return IncallManagerLight.multiply(a, b);
-}
+const IncallManagerLight = (() => {
+  const isSpeakerphoneOn = (): boolean => {
+    return IncallManagerLightModule.isSpeakerphoneOn();
+  };
+
+  const setSpeakerPhoneOn = (enable: boolean): void => {
+    IncallManagerLightModule.setSpeakerPhoneOn(enable);
+  };
+
+  const enableProximity = (): void => {
+    IncallManagerLightModule.enableProximity();
+  };
+
+  const disableProximity = (): void => {
+    IncallManagerLightModule.disableProximity();
+  };
+
+  return {
+    isSpeakerphoneOn,
+    setSpeakerPhoneOn,
+    enableProximity,
+    disableProximity,
+  };
+})();
+
+export default IncallManagerLight;

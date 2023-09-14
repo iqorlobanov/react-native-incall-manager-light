@@ -8,15 +8,37 @@ Incall manager for ReactNative
 npm install react-native-incall-manager-light
 ```
 
+```sh
+yarn add react-native-incall-manager-light
+```
+
+## Android
+Add `MODIFY_AUDIO_SETTINGS` and `WAKE_LOCK` permissions to `AndroidManifest.xml`
+```sh
+// ...
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+```
+
+
 ## Usage
 
 ```js
-import { multiply } from 'react-native-incall-manager-light';
+import IncallManagerLight from 'react-native-incall-manager-light';
 
 // ...
 
-const result = await multiply(3, 7);
+IncallManagerLight.enableProximity();
 ```
+
+## Methods
+
+| method                              | description                                                                    |
+| ----------------------------------- | ------------------------------------------------------------------------------ |
+| `isSpeakerphoneOn()`                | Return `boolean` value                                                         |
+| `setSpeakerPhoneOn(enable: boolean)`| Set speakerphone status                                                        |
+| `enableProximity()`                 | Enables the screen to turn off when an object approaches the proximity sensor  |
+| `disableProximity()`                | Вшыфидуы the screen to turn off when an object approaches the proximity sensor |
 
 ## Contributing
 
@@ -25,7 +47,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
