@@ -35,6 +35,10 @@ const IncallManagerLight = (() => {
   };
 
   const handleHeadsetMicrophone = (enable: boolean): void => {
+    if (Platform.OS !== 'android') {
+      return;
+    }
+
     IncallManagerLightModule.handleHeadsetMicrophone(enable);
   };
 
