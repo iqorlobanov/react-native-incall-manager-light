@@ -34,11 +34,16 @@ const IncallManagerLight = (() => {
     IncallManagerLightModule.disableProximity();
   };
 
+  const handleHeadsetMicrophone = (enable: boolean): void => {
+    IncallManagerLightModule.handleHeadsetMicrophone(enable);
+  };
+
   return {
     isSpeakerphoneOn,
     setSpeakerPhoneOn,
     enableProximity,
     disableProximity,
+    handleHeadsetMicrophone,
   };
 })();
 

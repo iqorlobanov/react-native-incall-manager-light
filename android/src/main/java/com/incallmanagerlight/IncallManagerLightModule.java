@@ -12,11 +12,13 @@ public class IncallManagerLightModule extends ReactContextBaseJavaModule {
   public static final String NAME = "IncallManagerLight";
   private final SpeakerPhoneManager speakerPhoneManager;
   private final ProximitySensorManager proximitySensorManager;
+  private final MicrophoneManager microphoneManager;
 
   public IncallManagerLightModule(ReactApplicationContext reactContext) {
     super(reactContext);
     speakerPhoneManager = new SpeakerPhoneManager(reactContext);
     proximitySensorManager = new ProximitySensorManager(reactContext);
+    microphoneManager = new MicrophoneManager(reactContext);
   }
 
   @Override
@@ -42,5 +44,13 @@ public class IncallManagerLightModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void disableProximity() {
     proximitySensorManager.removeListener();
+  }
+  @ReactMethod()
+  public void handleHeadsetMicrophone(boolean enable) {
+    if(enable) {
+      microphoneManager.enableHeadsetMicro();
+    } else {
+      microphoneManager.disableHeadsetMicro();
+    }
   }
 }
